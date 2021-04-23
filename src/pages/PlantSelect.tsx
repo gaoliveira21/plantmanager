@@ -6,6 +6,9 @@ import {
   FlatList,
   ActivityIndicator
 } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+
+import { Plant } from '../libs/storage'
 
 import { EnvironmentButton } from '../components/EnvironmentButton'
 import { Header } from '../components/Header'
@@ -22,33 +25,25 @@ interface EnvironmentState {
   title: string
 }
 
-interface PlantState {
-  id: number
-  name: string
-  about: string
-  water_tips: string
-  photo: string
-  environments: string[]
-  frequency: {
-    times: number
-    repeat_every: string
-  }
-}
-
 export function PlantSelect() {
+  const navigation = useNavigation();
+
   const [environments, setEnvironments] = useState<EnvironmentState[]>([])
-  const [plants, setPlants] = useState<PlantState[]>([])
-  const [filteredPlants, setFilteredPlants] = useState<PlantState[]>([])
+  const [plants, setPlants] = useState<Plant[]>([])
+  const [filteredPlants, setFilteredPlants] = useState<Plant[]>([])
   const [environmentSelected, setEnvironmentSelected] = useState('all')
   const [loading, setLoading] = useState(true)
 
   const [page, setPage] = useState(1)
   const [loadingMore, setLoadingMore] = useState(false)
-  const [loadedAll, setLoadedAll] = useState(false)
+
+  function handlePlantSelect(plant: Plant) {
+    navigation.navigate('PlantSave', { plant })
+  }
 
   async function fetchPlants() {
     const { data } = await api
-      .get<PlantState[]>('/plants', {
+      .get<Plant[]>('/plants', {
         params: {
           _sort: 'name',
           _order: 'asc',
@@ -154,6 +149,7 @@ export function PlantSelect() {
                 name: item.name,
                 photo: item.photo
               }}
+              onPress={() => handlePlantSelect(item)}
             />
           )}
           ListFooterComponent={
