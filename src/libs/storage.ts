@@ -13,9 +13,10 @@ export interface Plant {
     repeat_every: string
   }
   dateTimeNotification: Date
+  hour: string
 }
 
-interface StoragePlant {
+export interface StoragePlant {
   [id: string]: {
     data: Plant
   }

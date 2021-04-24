@@ -7,6 +7,7 @@ import { loadPlant, Plant } from '../libs/storage'
 
 import { Header } from '../components/Header'
 import { PlantCardSecondary } from '../components/PlantCardSecondary'
+import { Load } from '../components/Load'
 
 import waterdropImg from '../assets/waterdrop.png'
 
@@ -36,6 +37,8 @@ export function MyPlants() {
     loadStorageData()
   }, [])
 
+  if (loading) return <Load />
+
   return (
     <View style={styles.container}>
       <Header />
@@ -61,7 +64,7 @@ export function MyPlants() {
           keyExtractor={(item) => String(item.id)}
           renderItem={({ item }) => (
             <PlantCardSecondary
-              data={{ ...item, hour: format(new Date(item.dateTimeNotification), 'HH:mm') }}
+              data={item}
             />
           )}
           showsVerticalScrollIndicator={false}
