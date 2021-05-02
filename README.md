@@ -10,7 +10,7 @@
 
 <img src="./.github/banner.png">
 
-:art: [figma](https://www.figma.com/file/4sZgtjatnIDk1nm9RPjKje/PlantManager-Copy?node-id=2%3A3)
+### :art: [Acesse o protótipo do projeto no Figma](https://www.figma.com/file/4sZgtjatnIDk1nm9RPjKje/PlantManager-Copy?node-id=2%3A3)
 
 ## :hammer_and_wrench: Tecnologias
 
