@@ -10,6 +10,8 @@
 
 <img src="./.github/banner.png">
 
+:art: [figma](https://www.figma.com/file/4sZgtjatnIDk1nm9RPjKje/PlantManager-Copy?node-id=2%3A3)
+
 ## :hammer_and_wrench: Tecnologias
 
 - [React Native](https://reactnative.dev/)
